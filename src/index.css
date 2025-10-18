@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ThankYouDoc Medical App Design System 
+All colors MUST be HSL for consistency and theming.
+*/
+
+@layer base {
+  :root {
+    /* Medical-themed color palette */
+    --background: 220 20% 98%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    /* Medical blue - trustworthy and professional */
+    --primary: 210 85% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 210 85% 60%;
+
+    /* Healing green - secondary accent */
+    --secondary: 160 60% 95%;
+    --secondary-foreground: 160 60% 25%;
+    --secondary-accent: 160 70% 45%;
+
+    /* Soft medical teal */
+    --muted: 200 20% 96%;
+    --muted-foreground: 215 15% 50%;
+
+    --accent: 180 65% 92%;
+    --accent-foreground: 180 65% 25%;
+
+    /* Medical alert colors */
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 160 70% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 45 95% 55%;
+    --warning-foreground: 45 95% 15%;
+
+    --border: 220 15% 90%;
+    --input: 220 15% 96%;
+    --ring: 210 85% 45%;
+
+    --radius: 0.75rem;
+
+    /* Medical gradients */
+    --gradient-medical: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-healing: linear-gradient(135deg, hsl(var(--secondary-accent)), hsl(160 50% 60%));
+    --gradient-background: linear-gradient(180deg, hsl(var(--background)), hsl(220 15% 95%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 20% 98%));
+
+    /* Medical shadows */
+    --shadow-medical: 0 10px 30px -10px hsl(var(--primary) / 0.2);
+    --shadow-card: 0 4px 20px -4px hsl(215 25% 15% / 0.1);
+    --shadow-elevated: 0 8px 30px -8px hsl(215 25% 15% / 0.15);
+
+    /* Smooth medical transitions */
+    --transition-medical: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-gentle: all 0.2s ease-out;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode for medical app - softer, less harsh */
+    --background: 215 25% 8%;
+    --foreground: 220 20% 95%;
+
+    --card: 215 25% 10%;
+    --card-foreground: 220 20% 95%;
+
+    --popover: 215 25% 10%;
+    --popover-foreground: 220 20% 95%;
+
+    --primary: 210 85% 60%;
+    --primary-foreground: 215 25% 8%;
+    --primary-glow: 210 85% 70%;
+
+    --secondary: 160 30% 15%;
+    --secondary-foreground: 160 60% 85%;
+    --secondary-accent: 160 50% 55%;
+
+    --muted: 215 20% 15%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 180 40% 20%;
+    --accent-foreground: 180 65% 85%;
+
+    --destructive: 0 70% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 160 60% 55%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 215 20% 20%;
+    --input: 215 20% 15%;
+    --ring: 210 85% 60%;
+
+    /* Dark mode gradients */
+    --gradient-medical: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-healing: linear-gradient(135deg, hsl(var(--secondary-accent)), hsl(160 40% 45%));
+    --gradient-background: linear-gradient(180deg, hsl(var(--background)), hsl(215 25% 6%));
+    --gradient-card: linear-gradient(145deg, hsl(215 25% 12%), hsl(215 25% 8%));
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background: var(--gradient-background);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Medical App Component Styles */
+  .medical-card {
+    @apply bg-card border border-border rounded-lg shadow-[var(--shadow-card)] 
+           backdrop-blur-sm transition-[var(--transition-gentle)];
+    background: var(--gradient-card);
+  }
+
+  .medical-card:hover {
+    @apply shadow-[var(--shadow-elevated)] scale-[1.02];
+    transition: var(--transition-medical);
+  }
+
+  /* Premium touch: subtle card outline on hover for better contrast */
+  .medical-card:hover {
+    @apply border-primary/30;
+  }
+
+  .medical-gradient {
+    background: var(--gradient-medical);
+  }
+
+  .healing-gradient {
+    background: var(--gradient-healing);
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-card/80 border border-border/50;
+  }
+
+  /* Utility: premium divider spacing reduction for tight layouts */
+  .premium-tight {
+    @apply py-6 sm:py-8;
+  }
+
+  .medical-shadow {
+    box-shadow: var(--shadow-medical);
+  }
+
+  .fade-in {
+    @apply animate-fade-in;
+  }
+
+  .slide-up {
+    @apply animate-slide-up;
+  }
+
+  /* Medical form styles */
+  .medical-input {
+    @apply transition-[var(--transition-gentle)] 
+           focus:ring-2 focus:ring-primary/20 focus:border-primary;
+  }
+
+  .medical-button {
+    @apply transition-[var(--transition-medical)] 
+           hover:shadow-[var(--shadow-medical)] hover:scale-105;
+  }
+
+  .medical-button-primary {
+    @apply medical-button medical-gradient text-primary-foreground 
+           font-medium shadow-md;
+  }
+
+  .cursive-font {
+    font-family: 'Sirivennela', cursive !important;
+  }
+}
